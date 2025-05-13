@@ -523,3 +523,158 @@ body.sidebar-is-open .site-content {
     margin-left: 280px;
 }
 */
+
+/* Seção Modelos */
+#modelos {
+  padding: 30px;
+  text-align: center;
+}
+
+#modelos h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.modelos-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+  gap: 20px;
+}
+
+.modelo-item {
+  /* Defina uma largura base flexível ou uma largura máxima.
+     O flex-basis sugere uma largura inicial, mas permite que os itens
+     cresçam ou encolham. */
+  flex-grow: 1; /* Permite que o item cresça se houver espaço */
+  flex-shrink: 1; /* Permite que o item encolha se não houver espaço */
+  flex-basis: 280px; /* Largura base ideal para cada item - ajuste conforme necessário */
+  /* Ou uma largura mais simples com max-width: */
+  /* width: 100%; */ /* Para mobile-first, ocupando a largura disponível */
+  /* max-width: 300px; */ /* Limite a largura máxima do item */
+
+  /* IMPORTANTE: Remova a altura fixa ou defina como auto */
+  height: auto;
+  /* Você pode adicionar um min-width se quiser garantir um tamanho mínimo */
+  min-width: 200px; /* Por exemplo */
+  /* border: 1px solid #eee; /* Apenas para visualização do contêiner */
+}
+
+/* Imagem dentro do modelo-item */
+.modelo-item img {
+  width: 100%; /* A imagem ocupa toda a largura do .modelo-item */
+  height: auto;  /* A altura será ajustada automaticamente para manter a proporção da imagem */
+  display: block; /* Remove qualquer espaço extra abaixo da imagem */
+  object-fit: cover; /* Ainda útil se você quiser que a imagem CUBRA a área,
+                        mas com height:auto, a imagem já se ajusta.
+                        Pode ser mais relevante se você usar aspect-ratio (Opção 2)
+                        ou se a imagem tiver dimensões intrínsecas menores que o contêiner. */
+  background-color: #eee; /* Cor de fundo para placeholders */
+  /* border: 1px solid #ccc; /* Você já tem um no placeholder geral, pode remover daqui se quiser */
+}
+
+/* Ajustes para telas menores para garantir que os itens não fiquem muito pequenos
+   ou para forçar uma coluna única se flex-basis for muito grande. */
+@media (max-width: 600px) {
+  .modelo-item {
+    flex-basis: 100%; /* Faz com que cada item ocupe a largura total em telas pequenas */
+    max-width: 400px; /* Define uma largura máxima mesmo em uma única coluna */
+    /* Se você usar width e max-width na regra principal, ajuste aqui se necessário */
+    /* width: 90%; */
+    /* max-width: 350px; */
+  }
+}
+
+
+/* --- Estilos do Carrossel de Múltiplos Itens (Sem Botões) --- */
+#modelos {
+  padding: 30px 0;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+#modelos h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.modelos-multi-carousel-container {
+  position: relative;
+  /* LARGURA TOTAL DA ÁREA VISÍVEL (para 3 itens + espaçamentos)
+     Se cada item tem ~200px e queremos um gap de ~20px:
+     (200px * 3) + (20px * 2) = 600px + 40px = 640px
+     Ajuste este valor conforme o tamanho real dos seus itens e gaps! */
+  width: calc((200px * 3) + (20px * 2)); /* Exemplo: (item_width * 3) + (gap * 2) */
+  max-width: 90%; /* Adicionado para melhor responsividade em telas menores que 640px */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.modelos-multi-carousel-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); /* Transição um pouco mais lenta para autoplay */
+}
+
+.modelo-item-display {
+  width: 200px;
+  height: auto;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  margin-right: 20px; /* GAP entre os itens */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modelo-item-display:last-child {
+    /* Este :last-child dentro de uma longa faixa de clones
+       não vai funcionar como esperado para remover a margem do último VISÍVEL.
+       O JS pode ter que lidar com isso ou a margem é mantida e o track
+       é calculado com isso em mente. Para simplificar, manteremos a margem
+       e ajustamos os cálculos no JS, se necessário, ou simplesmente aceitamos
+       que o último clone terá uma margem.
+       Se o container tiver overflow: hidden, isso não será um problema visual. */
+    /* margin-right: 0; */
+}
+
+.modelo-item-display img {
+  width: 100%;
+  max-height: 350px;
+  display: block;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  object-fit: contain; /* Tenta mostrar imagem inteira, bom para proporções variadas */
+}
+
+.modelo-item-display .modelo-nome {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  min-height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modelo-item-original {
+    display: none;
+}
+
+/* --- ESTILOS DOS BOTÕES REMOVIDOS --- */
+
+@media (max-width: 720px) {
+    .modelos-multi-carousel-container {
+        /* Aqui o max-width: 90% já deve ajudar.
+           Se precisar que os itens fiquem menores, você teria que
+           ajustar 'width' do .modelo-item-display e também as constantes no JS.
+           Por simplicidade, o carrossel tentará mostrar 3 itens enquanto couber.
+        */
+    }
+}

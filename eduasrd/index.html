@@ -78,18 +78,43 @@
  
   <section id="modelos">
     <h2>MODELOS</h2>
-    <div class="modelos-grid">
-      <div class="modelo-item">
-        <img src="placeholder.png" alt="Modelo 1"> {/* Adicionei placeholder */}
-      </div>
-      <div class="modelo-item">
-        <img src="placeholder.png" alt="Modelo 2"> {/* Adicionei placeholder */}
-      </div>
-      <div class="modelo-item">
-        <img src="placeholder.png" alt="Modelo 3"> {/* Adicionei placeholder */}
-      </div>
+    <div class="modelos-multi-carousel-container">
+        <div class="modelos-multi-carousel-track">
+            <!-- As imagens individuais dos modelos são listadas aqui.
+                 O JavaScript vai cloná-las e agrupá-las para o efeito de loop. -->
+            <div class="modelo-item-original">
+                <img src="img/jetta.webp" alt="Jetta">
+                <p class="modelo-nome">JETTA</p>
+            </div>
+            <div class="modelo-item-original">
+                <img src="img/corola do novo.jpg" alt="Nivus">
+                <p class="modelo-nome">COROLLA</p>
+            </div>
+            <div class="modelo-item-original">
+                <img src="img/ford-everest.webp" alt="T-Cross">
+                <p class="modelo-nome">EVEREST</p>
+            </div>
+            <div class="modelo-item-original">
+                <img src="img/civic g10.jpg" alt="Taos">
+                <p class="modelo-nome">CIVIC G10</p>
+            </div>
+            <div class="modelo-item-original">
+                <img src="img/mini cooper s.jpg" alt="Virtus"> <!-- Exemplo de 5ª imagem -->
+                <p class="modelo-nome">MINI COOPER S</p>
+            </div>
+            <div class="modelo-item-original">
+                <img src="img/haval.jpg" alt="Polo">   <!-- Exemplo de 6ª imagem -->
+                <p class="modelo-nome">HAVAL</p>
+            </div>
+            <!-- Adicione todos os seus modelos aqui -->
+        </div>
+
+
     </div>
-  </section>
+    <!-- Dots não são tão práticos para carrossel de múltiplos itens,
+         mas podem ser adaptados se você realmente quiser. Por ora, vamos omiti-los
+         para simplificar. -->
+</section>
 
   <section id="sua-viagem">
     <h2>SUA VIAGEM COMEÇA AQUI</h2>
